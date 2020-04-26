@@ -3,17 +3,17 @@
     <div class="h1 text-center">Password Generator</div>
     <hr>
     <div class="w-auto">
-      <input class="form-control my-3" type="number" placeholder="Length" (input)="getLength($event)">
-      <div class="form-check m-1">
-       <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="onChangeUseLetters($event)">
+      <input class="form-control my-3" type="number" placeholder="password length" (input)="getLength($event)">
+      <div class="form-check my-2">
+       <input type="checkbox" class="form-check-input" id="letters" (change)="onChangeUseLetters($event)">
        <label class="form-check-label" for="exampleCheck1">Use letters</label>
      </div>
-     <div class="form-check m-1">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="onChangeUseNumbers()">
+     <div class="form-check my-2">
+      <input type="checkbox" class="form-check-input" id="numbers" (change)="onChangeUseNumbers()">
       <label class="form-check-label" for="exampleCheck1">Use numbers</label>
     </div>
-    <div class="form-check m-1">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="onChangeUseSymbols()">
+    <div class="form-check my-2">
+      <input type="checkbox" class="form-check-input" id="symbols" (change)="onChangeUseSymbols()">
       <label class="form-check-label" for="exampleCheck1">Use symbols</label>
     </div>
     </div>
@@ -23,7 +23,10 @@
       [disabled]="!(passLength && (useLetters || useNumbers || useSymbols))"
     >
       Generate</button>
-    <input class="form-control my-3 w-auto" type="text" placeholder="Generated password" [value]="generatedPass" readonly>
-    <p class="lead">{{generatedPass}}</p>
+      <div *ngIf="generatedPass">
+        <p class="">Your password is:</p>
+        <p class="border p-2">{{generatedPass}}</p>
+      </div>
+   
   </div>
 </div>      
